@@ -19,13 +19,15 @@ class Category(models.Model):
 
 class Job (models.Model):
     title=models.CharField(max_length=50)
-    jopType=models.CharField( max_length=50,choices=JOP_TYPE)
+    job_type=models.CharField( max_length=50,choices=JOP_TYPE)
     discribtion=models.TextField(max_length=1500)
     published_at=models.DateTimeField(auto_now=TRUE)
+                
     vacancy=models.IntegerField(default=1)
     salary=models.IntegerField(default=0)
     experience=models.IntegerField(default=1)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    img=models.ImageField(upload_to='jobs/')
     def __str__(self) :
         return self.title
 
